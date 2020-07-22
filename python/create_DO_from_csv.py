@@ -35,7 +35,8 @@ archival_object_csv = input("Path to input CSV: ")
 updated_archival_object_csv = archival_object_csv + "-out.csv"
 
 #Open Input CSV and iterate over rows
-with open(archival_object_csv,'r') as csvfile, open(updated_archival_object_csv,'w', newline='') as csvout:
+#encoding ensures excel respects utf-8 encoding of csv file
+with open(archival_object_csv,'r') as csvfile, open(updated_archival_object_csv,'w', newline='', encoding="utf-8-sig") as csvout:
     csvin = csv.reader(csvfile)
     next(csvin, None) #ignore header row
     csvout = csv.writer(csvout)

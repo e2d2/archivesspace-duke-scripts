@@ -19,7 +19,8 @@ digital_object_export_csv = input('Export path for CSV: ')
 
 digital_objects_list = aspace.client.get(aspace_repo.uri+'/digital_objects?all_ids=true').json()
 
-with open(digital_object_export_csv,'w', newline='') as csvfile:
+#encoding ensures excel respects utf-8 encoding of csv file
+with open(digital_object_export_csv,'w', newline='', encoding="utf-8-sig") as csvfile:
     writer = csv.writer(csvfile)
     #write CSV header row
     writer.writerow(["digital_object_URI", "digital_object_identifier", "digital_object_title", "digital_object_publish", "linked_instances", "file_version_uri_1","Access_Type"])
